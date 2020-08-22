@@ -35,6 +35,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ico_the_distant_valhalla_exe0001.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -59,6 +62,7 @@
     <Content Include="DroidSansFallback.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="ico_the_distant_valhalla_exe0001.ico" />
     <Content Include="times_new_yorker.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

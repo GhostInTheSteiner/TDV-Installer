@@ -6,6 +6,8 @@ using System.Runtime.InteropServices;
 using Microsoft.Win32;
 using System.Globalization;
 using System.Windows.Forms;
+using System.Reflection;
+using System.Diagnostics;
 
 namespace TDV_Installer
 {
@@ -29,17 +31,17 @@ namespace TDV_Installer
             RegisterFont("times_new_yorker.ttf");
             RegisterFont("Zenzai_Itacha.ttf");
 
-            Console.WriteLine("Succesfully registered fonts!");
+            Console.WriteLine("Succesfully installed fonts!");
 
 
 
 
-            File.Copy(
+            File.Move(
                 Environment.CurrentDirectory + "\\Dont look at me\\The Distant Valhalla.exe",
                 Environment.CurrentDirectory + "\\The Distant Valhalla.exe"
             );
 
-            Console.WriteLine("Succesfully copied 'The Distant Valhalla.exe'!");
+            Console.WriteLine("Succesfully moved 'The Distant Valhalla.exe'!");
 
 
 
@@ -47,6 +49,13 @@ namespace TDV_Installer
             SetWin7Compatibility(Environment.CurrentDirectory + "\\The Distant Valhalla.exe");
 
             Console.WriteLine("Succesfully set to Windows 7 compatibility!");
+
+
+
+
+            Directory.Delete(Environment.CurrentDirectory + "\\Dont look at me\\");
+
+            Console.WriteLine("Succesfully averted the 'gaze' ('_v')");
 
 
 
@@ -59,6 +68,23 @@ namespace TDV_Installer
             {
                 MessageBox.Show("\"The Distant Valhalla - Valkyrie's Rebirth\" was successfully installed on your machine. However, your system doesn't have japanese locale yet. This will cause a few images to not be displayed." + Environment.NewLine + Environment.NewLine + "Please follow the instrucions on the download page to switch to japanese locale before reading.");
             }
+
+
+
+
+            string batchCommands = string.Empty;
+            string exeFileName = "\"" + Environment.CurrentDirectory + "\\TDV-Installer.exe\"";
+
+            batchCommands += "@ECHO OFF\n";                         // Do not show any output
+            batchCommands += "ping 127.0.0.1 > nul\n";              // Wait approximately 4 seconds (so that the process is already terminated)
+            batchCommands += "echo j | del /F ";                    // Delete the executeable
+            batchCommands += exeFileName + "\n";
+            batchCommands += "echo j | del deleteMyProgram.bat";    // Delete this bat file
+
+            File.WriteAllText("deleteMyProgram.bat", batchCommands);
+
+            Process.Start("deleteMyProgram.bat");
+
         }
 
 
