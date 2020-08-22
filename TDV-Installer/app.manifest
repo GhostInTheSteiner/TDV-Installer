@@ -8,6 +8,7 @@
         <!-- UAC Manifest Options
              If you want to change the Windows User Account Control level replace the 
              requestedExecutionLevel node with one of the following.
+
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
         <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
